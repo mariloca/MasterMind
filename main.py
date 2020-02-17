@@ -1,62 +1,56 @@
-import rand as r
 
-print("Welcome to MasterMind Game!\nIn this game, you will have 10 attempts to guess four numbers from 0~7.")
-print("If you want to try a easier one or to challenge yourself, you can set the game by yourself!")
-flag=True
-digit=0
+import loop as lp
+
+#Create Main Menu for the Game, which allows the player to:
+#start a new game, view game score, exit the game, go to help.
+instru='''
+----------Welcome to MasterMind Game-----------
+-------------------Main Menu-------------------
+In this Mastermind game, you are playing against the computer. 
+You must guess the right number combinations within 10 attempts to win the game.
+Game default setting: 10 attempts to guess a four number combinations from 0~7.
+You can always change the difficulty of the game by yourself!
+------------------------------------------------
+Here are the options you can do during the game:
+1.Start a new game ---Enter: "s"
+2.Change the game difficulty ---Enter:"c"
+3.View your game score ---Enter: "v"
+4.Exit the game ---Enter: "e"
+5.See the menu ---Enter: "m"
+------------------------------------------------
+	'''
+print(instru)
+#Default setting
+digit=4
 lower=0
-upper=0
-attm=0
-while flag:
-	chall=input("Do you want to change the default game? Please enter Y or N: ") 
-	if chall=="Y":
+upper=7
+attm=10
+while True:
+	option=input("What would you like to do? Enter:")
+
+	if option=='s': #start a new game
+		#start guessloop here
+		score=lp.guessloop(digit,lower,upper,attm)
+		if score>0:
+			print("Bingo! You got it!\nYour score is", score )
+		elif score==0:
+			print("You have reached the guess limits.")
+	elif option=="c": #change difficulty
 		digit=int(input("Please enter the number digits: "))
 		lower=int(input("Please enter the lower bound: "))
 		upper=int(input("Please enter the upper bound: "))
 		attm=int(input("Please enter guess times: "))
-		flag=False
-	elif chall=="N":
-		digit=4
-		lower=0
-		upper=7
-		attm=10
-		flag=False
-	#Input error check
-	elif chall==" " or chall != "Y" or chall != "N":
-		print("Invalid input. Please enter Y or N. ")
-#Generate random number using function from imported Module rand
-secret=r.rnumlistwithoutreplacement(digit,lower,upper)
-#Check guess answer
-#print(secret)
+	elif option=='v': #show scoreboard
+		print(score)
 
-#Create Key-Value pair for the answer and input number
-class dictionary(dict):  
-  
-    # __init__ function  
-    def __init__(self):  
-        self = dict()  
-          
-    # Function to add key:value  
-    def add(self, key, value):  
-        self[key] = value
-i=0
-j=len(secret)-1
-#print(j)
- 
-#sdict stores key-value pairs of guess answer
-sdict = dictionary()  
-for number in secret:
-	sdict.key=i
-	i=i+1
-	sdict.value=number
-	j=j-1
-	sdict.add(sdict.key, sdict.value) 
-#print(sdict)
-
-print("*****************************************\nAre you ready? Let's get started!")
-
-guess=input("Please enter your guess: ")
-
+	elif option=='e':	#Exit the game
+		print("See you next time!")
+		break
+	elif option=='m':
+		print(instru)
+	else:
+		print("Invalid input. Please enter again!")
+		
 
 
 
