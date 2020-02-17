@@ -10,6 +10,7 @@ def rnumlistwithoutreplacement(num, min, max):
     request.add_header('User-Agent', 'randomwrapy/0.1 very alpha')
     opener = urllib.request.build_opener()
     numlist = opener.open(request).read()
+    #decode the byte to unicode
     newlist=numlist.decode()
     return newlist.split()
     
@@ -37,8 +38,3 @@ def reportquota():
     print("This IP address has", quota, "bits left. Visit http://www.random.org/quota for more information.")    
     
     
-#if __name__=="__main__":
-    #numlists=rnumlistwithoutreplacement(4,0,7)
-    #for i in numlists:
-        #print(int(i))
-    #print(numlists)

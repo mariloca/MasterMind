@@ -13,8 +13,11 @@ def guessloop(num,lower,upper,attempt):
 	#Generate random number
 	secret=r.rnumlistwithoutreplacement(num,lower,upper)
 	#Check guess answer
-	print(secret)
-
+	#print(secret)
+	# joins elements of secret by '' 
+	# and stores in an integer ans as a hint to guess 
+	ans = int("".join(secret))
+	print(ans)
 	#Generate list, dicts, ready for use
 	#Create Key-Value pair for the answer and input number
 	i=0
@@ -102,16 +105,22 @@ def guessloop(num,lower,upper,attempt):
 					wrong=wrong+1
 	
 			attempt=attempt-1
-			if attempt==0 or bingo==num:
-				break
+			#Hint
+			if g>ans:
+				print("Hint: Your guess is bigger than the answer.")
+			elif g<ans:
+				print("Hint: Your guess is smaller than the answer.")
 			print("Guess number:", guess, "Correct number:", almost, "Correct position:", bingo)
 			print("You have", attempt, "guesses left.\n===================================")
 			score=int(score-dpoint)
-			print("S:",score)
+			#print("s:", score)
+			if attempt==0 or bingo==num:
+				break
+			
 		except:
 			print("Invalid input. Please enter a number.")
 
 	return score
 
-ss=guessloop(4,0,7,10)
-print(ss)
+#ss=guessloop(4,0,7,10)
+#print(ss)
