@@ -1,12 +1,11 @@
 
 import loop as lp
-
+import color as cl
 player=input("----------Welcome to MasterMind Game-----------\nWhat's your name?")
 #Create Main Menu for the Game, which allows the player to:
 #start a new game, view game score, exit the game, go to help.
 print("Hi,", player, "! Below is the Main Menu:")
-instru='''
--------------------Main Menu-------------------
+instru='''-------------------Main Menu-------------------                                               
 In this Mastermind game, you are playing against the computer. 
 You must guess the right number combinations within 10 attempts to win the game.
 Game default setting: 10 attempts to guess a four number combinations from 0~7.
@@ -21,7 +20,7 @@ Here are the options you can do during the game:
 5.See the menu ---Enter: "m"
 ------------------------------------------------
 	'''
-print(instru)
+cl.prBold(instru)
 #Default setting
 digit=4
 lower=0
@@ -35,9 +34,9 @@ while True:
 		#start guessloop here
 		score=lp.guessloop(digit,lower,upper,attm)
 		if score>0:
-			print("Bingo! You got it!\nYour score is", score )
+			cl.prGreen("Bingo! You got it!")
 		elif score==0:
-			print("You have reached the guess limits.")
+			cl.prRed("You have reached the guess limits.")
 		score_list.append(score)
 	elif option=="c": #change difficulty
 		digit=int(input("Please enter the number digits: "))
@@ -50,14 +49,16 @@ while True:
 		upper=7
 		attm=10
 	elif option=='v': #show scoreboard, keep the past scores
-		print(player, ", your scores are:", score_list)
+		s=player + ", your scores are:" + str(score_list)
+		cl.prLightPurple(s)
 	elif option=='e':	#Exit the game
-		print("See you next time,", player,"!")
+		s="See you next time," + player + "!" 
+		cl.prPurple(s)
 		break
 	elif option=='m':
-		print(instru)
+		cl.prYellow(instru)
 	else:
-		print("Invalid input. Please enter again!")
+		cl.prPurple("Invalid input. Please enter again!")
 		
 
 

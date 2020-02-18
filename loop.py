@@ -1,5 +1,6 @@
 import rand as r
 from dict import dictionary
+import color as cl
 
 #class dictionary(dict):
 #    # __init__ function  
@@ -104,21 +105,28 @@ def guessloop(num,lower,upper,attempt):
 				else:
 					wrong=wrong+1
 	
-			attempt=attempt-1
 			#Hint
 			if g>ans:
 				print("Hint: Your guess is bigger than the answer.")
 			elif g<ans:
 				print("Hint: Your guess is smaller than the answer.")
 			print("Guess number:", guess, "Correct number:", almost, "Correct position:", bingo)
+			
+			#Based on compare result, check if need next input guess
+			#if the input is correct, then break, return score
+			#if the input is incorrect, attempt-1, score-10, back to next guess
+			#if attempt==0, then game over.
+			if bingo==num:
+				break
+			attempt=attempt-1
 			print("You have", attempt, "guesses left.\n===================================")
 			score=int(score-dpoint)
-			#print("s:", score)
-			if attempt==0 or bingo==num:
+				#print("s:", score)
+			if attempt==0:
 				break
 			
 		except:
-			print("Invalid input. Please enter a number.")
+			cl.prRed("Invalid input. Please enter a number.")
 
 	return score
 
