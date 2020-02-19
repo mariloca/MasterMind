@@ -1,11 +1,11 @@
 import urllib.request, urllib.error, urllib.parse
 
 
-def rnumlistwithoutreplacement(num, min, max):
+def randomnumbergenerate(num, min, max):
     """Returns a randomly ordered list of the integers between min and max"""
     if checkquota() < 1:
         raise Exception("Your www.random.org quota has already run out.")
-    requestparam = build_request_parameterNR(num, min, max)
+    requestparam = buildrequestparameterNR(num, min, max)
     request = urllib.request.Request(requestparam)
     request.add_header('User-Agent', 'randomwrapy/0.1 very alpha')
     opener = urllib.request.build_opener()
@@ -16,7 +16,7 @@ def rnumlistwithoutreplacement(num, min, max):
     
 
 #helper
-def build_request_parameterNR(num, min, max):
+def buildrequestparameterNR(num, min, max):
     randomorg = 'https://www.random.org/integers/?num='
     vanilla = '&col=1&base=10&format=plain&rnd=new'
     params = str(num) + '&min=' + str(min) + '&max=' + str(max)

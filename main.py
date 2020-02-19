@@ -15,9 +15,9 @@ Here are the options you can do during the game:
 1.Start a new game ---Enter: "s"
 2.Change the game difficulty ---Enter:"c"
 3.Reset the game to default setting ---Enter:"r"
-3.View your game score ---Enter: "v"
-4.Exit the game ---Enter: "e"
-5.See the menu ---Enter: "m"
+4.View your game score ---Enter: "v"
+5.Exit the game ---Enter: "e"
+6.See the menu ---Enter: "m"
 ------------------------------------------------
 	'''
 cl.prBold(instru)
