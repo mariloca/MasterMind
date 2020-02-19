@@ -1,9 +1,15 @@
+import mainloop
+import color 
 
-import loop as lp
-import color as cl
+def defaultsetting():
+	digit=4
+	lower=0
+	upper=7
+	attempt=10
+	return (digit, lower, upper, attempt)
+
 player=input("----------Welcome to MasterMind Game-----------\nWhat's your name?")
-#Create Main Menu for the Game, which allows the player to:
-#start a new game, view game score, exit the game, go to help.
+
 print("Hi,", player, "! Below is the Main Menu:")
 instru='''-------------------Main Menu-------------------                                               
 In this Mastermind game, you are playing against the computer. 
@@ -20,51 +26,39 @@ Here are the options you can do during the game:
 6.See the menu ---Enter: "m"
 ------------------------------------------------
 	'''
-cl.prBold(instru)
-#Default setting
-digit=4
-lower=0
-upper=7
-attm=10
+color.printbold(instru)
+digit,lower,upper,attempt=defaultsetting()
 score_list=[]
 while True:
 	option=input("What would you like to do? Enter:")
 
 	if option=='s': #start a new game
 		#start guessloop here
-		score=lp.guessloop(digit,lower,upper,attm)
+		score=mainloop.guessloop(digit,lower,upper,attempt)
 		if score>0:
-			cl.prGreen("Bingo! You got it!")
+			color.printgreen("Bingo! You got it!")
 		elif score==0:
-			cl.prRed("You have reached the guess limits.")
+			color.printred("You have reached the guess limits.")
 		score_list.append(score)
 	elif option=="c": #change difficulty
-		digit=int(input("Please enter the number digits: "))
-		lower=int(input("Please enter the lower bound: "))
-		upper=int(input("Please enter the upper bound: "))
-		attm=int(input("Please enter guess times: "))
-	elif option=='r':
-		digit=4
-		lower=0
-		upper=7
-		attm=10
+		digit=int(input("Enter the number digits: "))
+		lower=int(input("Enter the number the random number generator starts: "))
+		upper=int(input("Enter the number the random number generator ends: "))
+		attempt=int(input("Enter guess times: "))
+	elif option=='r': #reset game
+		digit,lower,upper,attempt=defaultsetting()
 	elif option=='v': #show scoreboard, keep the past scores
 		s=player + ", your scores are:" + str(score_list)
-		cl.prPurple(s)
-	elif option=='e':	#Exit the game
+		color.printpurple(s)
+	elif option=='e':	#exit the game
 		s="See you next time," + player + "!" 
-		cl.prPurple(s)
+		color.printpurple(s)
 		break
 	elif option=='m':
-		cl.prBold(instru)
+		color.printbold(instru)
 	else:
-		cl.prRed("Invalid input. Please enter again!")
+		color.printred("Invalid input. Please enter again!")
 		
-
-
-
-
-
 
 
 
