@@ -3,4 +3,4 @@ Mastermind Game
 
 'Mastermind Game Summary.docx' is an overview of the game design. Please check this doc first.
 
-Then, run 'main.py' in command line. 'main.py' requeires python 3.x. 
+Then, run 'main.py' in command line. 'main.py' written in python 3. 
