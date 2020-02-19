@@ -50,15 +50,15 @@ while True:
 		attm=10
 	elif option=='v': #show scoreboard, keep the past scores
 		s=player + ", your scores are:" + str(score_list)
-		cl.prLightPurple(s)
+		cl.prPurple(s)
 	elif option=='e':	#Exit the game
 		s="See you next time," + player + "!" 
 		cl.prPurple(s)
 		break
 	elif option=='m':
-		cl.prYellow(instru)
+		cl.prBold(instru)
 	else:
-		cl.prPurple("Invalid input. Please enter again!")
+		cl.prRed("Invalid input. Please enter again!")
 		
 
 

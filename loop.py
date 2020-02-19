@@ -18,7 +18,7 @@ def guessloop(num,lower,upper,attempt):
 	# joins elements of secret by '' 
 	# and stores in an integer ans as a hint to guess 
 	ans = int("".join(secret))
-	print(ans)
+	#print(ans)
 	#Generate list, dicts, ready for use
 	#Create Key-Value pair for the answer and input number
 	i=0
@@ -46,10 +46,11 @@ def guessloop(num,lower,upper,attempt):
 	score=100
 	dpoint=score/attempt
 	print("*****************************************\nAre you ready? Let's get started!")
+	hint=input("Do you want to see the Hint? Please enter Y or N: ")
 	#Start the guess loop
 	while True:
 		g=input("Please enter your guess: ")
-		#Make sure each guess will have the same repeat dict to compare
+		#Make sure each guess will have the same 'repeat' dict to compare
 		#Values that have been minus, add back
 		local_repeat=dictionary()
 		for key,value in repeat.items():
@@ -57,7 +58,8 @@ def guessloop(num,lower,upper,attempt):
 			local_repeat.add(key,value)
 		#print(local_repeat)
 		#Try-except step is to catch input error.
-		#But if the guess number starts with zero like '0762', int(g) will omit the first zero,
+		#If the guess number starts with zero like '0762', 
+		#int(g) will omit the first zero,
 		#so, I create 'guess' as a copy.
 		guess=g
 		try:
@@ -106,23 +108,26 @@ def guessloop(num,lower,upper,attempt):
 					wrong=wrong+1
 	
 			#Hint
-			if g>ans:
-				print("Hint: Your guess is bigger than the answer.")
-			elif g<ans:
-				print("Hint: Your guess is smaller than the answer.")
+			if hint=="Y":
+				if g>ans:
+					print("Hint: Your guess is bigger than the answer.")
+				elif g<ans:
+					print("Hint: Your guess is smaller than the answer.")
+
+
 			print("Guess number:", guess, "Correct number:", almost, "Correct position:", bingo)
 			
-			#Based on compare result, check if need next input guess
-			#if the input is correct, then break, return score
+			#Based on compared result, check if need next input guess
+			#if the input is correct, bingo==num, then break, return score
 			#if the input is incorrect, attempt-1, score-10, back to next guess
 			#if attempt==0, then game over.
-			if bingo==num:
+			if bingo==num: 
 				break
 			attempt=attempt-1
 			print("You have", attempt, "guesses left.\n===================================")
 			score=int(score-dpoint)
 				#print("s:", score)
-			if attempt==0:
+			if attempt==0: #game over
 				break
 			
 		except:
