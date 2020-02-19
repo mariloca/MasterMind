@@ -5,7 +5,7 @@ import color
 def guessloop(num,lower,upper,attempt):
 	#Data preparation
 	secret=rand.randomnumbergenerate(num,lower,upper) #Generate random number in a list
-	print(secret)
+	#print(secret)
 	answerdict=convertlisttodict(secret)
 	repeatdict=repeattimedict(secret)
 	score=100
